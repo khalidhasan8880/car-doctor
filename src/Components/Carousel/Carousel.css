@@ -1,0 +1,16 @@
+.banner-title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 3.5vh;
+    font-size: 3.5vw;
+    line-height: 3.5vh;
+    line-height: 3.5vw;
+    color: #FFFFFF;
+}
+
+@media only screen and (max-width: 600px) {
+   
+    p{
+        font-size: small;
+    }
+  }
