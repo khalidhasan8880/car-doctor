@@ -64,7 +64,7 @@ const Carousel = () => {
         </div>
         <div className="absolute flex gap-x-4 justify-between transform -translate-y-1/2  right-5 bottom-5">
           <a href="#slide3" className=" hover:bg-red-500 border-none btn btn-circle">❮</a>
-          <a href="#slide1" className=" hover:bg-red-500 border-none btn btn-circle">❯</a>
+          <a href="#slide5" className=" hover:bg-red-500 border-none btn btn-circle">❯</a>
         </div>
       </div>
       <div id="slide5" className="carousel-item relative w-full">

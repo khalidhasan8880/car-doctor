@@ -2,8 +2,9 @@ import Carousel from "../Components/Carousel/Carousel";
 import person from '../assets/images/about_us/person.jpg'
 import parts from '../assets/images/about_us/parts.jpg'
 import { useEffect, useState } from "react";
-import {AiOutlineArrowRight} from 'react-icons/ai'
-import { Link } from "react-router-dom";
+import ServiceCard from "../Components/ServiceCard/ServiceCard";
+import { AiOutlineArrowDown } from "react-icons/ai";
+
 
 const Home = () => {
     const [services, setServices] = useState([])
@@ -43,19 +44,12 @@ const Home = () => {
                 </div>
                 <div className="flex flex-wrap gap-6 p-4 rounded-lg">
                     {
-                        services.map(service => <div key={service._id} className="card w-96 bg-base-100 shadow-xl rounded-lg flex flex-col gap-y-5 justify-between px-3 py-3">
-                            <figure className=" pt-3">
-                                <img src={service.img} alt="Shoes" className="rounded-xl" />
-                            </figure>
-                            <h2 className="font-bold text-1xl">{service.title}</h2>
-                            <div className="flex justify-between text-warning font-bold ">
-                                <p>Price : ${service.price}</ p>
-                                <Link to={`/service_details/${service._id}`}><AiOutlineArrowRight size={22} ></AiOutlineArrowRight></Link>
-                            </div>
-                        </div>
-                        )
+                        services.map(service => <ServiceCard name="array" key={service._id} service={service}></ServiceCard>)
                     }
+
                 </div>
+                <button className="btn btn-warning mx-auto block">See More <AiOutlineArrowDown className="inline"></AiOutlineArrowDown>
+                </button>
             </div>
         </div>
 
