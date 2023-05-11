@@ -1,7 +1,18 @@
 import Carousel from "../Components/Carousel/Carousel";
 import person from '../assets/images/about_us/person.jpg'
 import parts from '../assets/images/about_us/parts.jpg'
+import { useEffect, useState } from "react";
+import {AiOutlineArrowRight} from 'react-icons/ai'
+import { Link } from "react-router-dom";
+
 const Home = () => {
+    const [services, setServices] = useState([])
+    useEffect(() => {
+        fetch('services.json')
+            .then(res => res.json())
+            .then(data => setServices(data))
+    }, [])
+    console.log(services);
     return (
         <div>
             <Carousel></Carousel>
@@ -28,9 +39,23 @@ const Home = () => {
                 <div className="text-center mx-auto w-1/2">
                     <h4 className="text-warning my-3 font-bold text-2xl">Services</h4>
                     <h1 className="text-4xl font-bold my-3">Our Service Area</h1>
-                    <p className="my-3">the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. </p>
+                    <p className="my-3">the majority have suffered alteration in some form, by injected humour, or randomised words which don not look even slightly believable. </p>
                 </div>
-
+                <div className="flex flex-wrap gap-6 p-4 rounded-lg">
+                    {
+                        services.map(service => <div key={service._id} className="card w-96 bg-base-100 shadow-xl rounded-lg flex flex-col gap-y-5 justify-between px-3 py-3">
+                            <figure className=" pt-3">
+                                <img src={service.img} alt="Shoes" className="rounded-xl" />
+                            </figure>
+                            <h2 className="font-bold text-1xl">{service.title}</h2>
+                            <div className="flex justify-between text-warning font-bold ">
+                                <p>Price : ${service.price}</ p>
+                                <Link to={`/service_details/${service._id}`}><AiOutlineArrowRight size={22} ></AiOutlineArrowRight></Link>
+                            </div>
+                        </div>
+                        )
+                    }
+                </div>
             </div>
         </div>
 
