@@ -7,6 +7,7 @@ import Home from "./Pages/Home";
 import Login from "./Authentication/Login";
 import SignUp from "./Authentication/SignUp";
 import ServiceDetails from "./Pages/ServiceDetails";
+import CheckOut from "./Pages/CheckOut";
 const router = createBrowserRouter([
   
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
         {
             path: '/login',
             element: <Login></Login>,
+        },
+        {
+            path: '/checkout',
+            element: <CheckOut></CheckOut>,
         },
         {
             path: '/service/:id',

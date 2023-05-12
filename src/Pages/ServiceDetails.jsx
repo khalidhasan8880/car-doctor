@@ -6,8 +6,8 @@ const ServiceDetails = () => {
     console.log(service);
     return (
         <div>
-            <Banner></Banner>
-            service details page
+            <Banner>Service Details</Banner>
+            
         </div>
     );
 };
