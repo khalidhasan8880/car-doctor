@@ -21,7 +21,7 @@ const AuthProvider = ({ children }) => {
         }).then(() => {
             console.log('name update korte parche');
             // ...
-        }).catch((error) => {
+        }).catch(() => {
             console.log('update korte pare nai');
         });
     }

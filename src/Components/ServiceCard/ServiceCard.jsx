@@ -10,7 +10,7 @@ const ServiceCard = ({ service }) => {
             <h2 className="font-bold text-1xl">{service.title}</h2>
             <div className="flex justify-between text-warning font-bold ">
                 <p>Price : ${service.price}</ p>
-                <Link to={`/service_details/${service._id}`}><AiOutlineArrowRight size={22} ></AiOutlineArrowRight></Link>
+                <Link to={`/service/${service._id}`}><AiOutlineArrowRight size={22} ></AiOutlineArrowRight></Link>
             </div>
         </div>
     );
