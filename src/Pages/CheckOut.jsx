@@ -16,6 +16,7 @@ const CheckOut = () => {
         const firstName = form.firstName.value;
         const lastName = form.lastName.value;
         const phone = form.phone.value;
+        const userEmail = user?.email
         const email = form.email.email;
         const date = form.date.email;
         const message = form.message.value;
@@ -26,6 +27,7 @@ const CheckOut = () => {
             service_name: title,
             customer_first_name:firstName,
             customer_last_name:lastName,
+            userEmail,
             date,
             img,
             phone,
@@ -45,7 +47,7 @@ const CheckOut = () => {
             console.log(data);
             if (data.acknowledged) {
                 Swal.fire(
-                    'Order Confirmed',
+                    'Order successful',
                     '',
                     'success'
                   )

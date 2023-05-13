@@ -1,7 +1,16 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useOutletContext, useParams} from "react-router-dom";
 
 const ServiceDetails = () => {
-    
+
+    const setSelectedServiceId = useOutletContext()
+    const {id} = useParams()
+   
+    if (id) {
+        setSelectedServiceId(id)
+    }else{
+        setSelectedServiceId(null)
+    }
+
     const { img, description, facility, title, } = useLoaderData()
     return (
         <div className="sm:w-4/6 w-full flex flex-col gap-y-5 px-5">
