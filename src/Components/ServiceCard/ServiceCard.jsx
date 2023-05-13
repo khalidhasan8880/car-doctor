@@ -1,7 +1,7 @@
 import {AiOutlineArrowRight} from 'react-icons/ai'
 import { Link } from "react-router-dom";
 const ServiceCard = ({ service }) => {
-
+console.log(service);
     return (
         <div className="card w-96 bg-base-100 shadow-xl rounded-lg flex flex-col gap-y-5 justify-between px-3 py-3">
             <figure className=" pt-3">

@@ -9,11 +9,11 @@ import { AiOutlineArrowDown } from "react-icons/ai";
 const Home = () => {
     const [services, setServices] = useState([])
     useEffect(() => {
-        fetch('services.json')
+        fetch('http://localhost:5000/services')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
-    
+console.log(services);
     return (
         <div>
             <Carousel></Carousel>
@@ -44,7 +44,7 @@ const Home = () => {
                 </div>
                 <div className="flex flex-wrap gap-6 p-4 rounded-lg">
                     {
-                        services.map(service => <ServiceCard name="array" key={service._id} service={service}></ServiceCard>)
+                        services.map(service => <ServiceCard services={services} key={service._id} service={service}></ServiceCard>)
                     }
 
                 </div>

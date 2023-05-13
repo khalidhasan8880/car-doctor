@@ -1,7 +1,22 @@
+import { useContext } from 'react';
 import logoImg from '../assets/logo.svg'
 import { NavLink } from "react-router-dom";
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const NavBar = () => {
+    // hooks
+    const { user, logOut } = useContext(AuthContext)
+    // log out 
+    const logoutHandler = () => {
+        logOut()
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+    // common list item
     const links = <>
         <li>
             <NavLink to='/'>Home </NavLink>
@@ -18,6 +33,16 @@ const NavBar = () => {
         <li>
             <NavLink to='/contact'>Contact </NavLink>
         </li>
+        {user ?
+            <li>
+                <button onClick={logoutHandler}>Log Out</button>
+            </li>
+            :
+            <li>
+                <NavLink to='/login'>Log in </NavLink>
+            </li>
+        }
+
     </>
     return (
         <div className="navbar bg-base-100">
@@ -34,12 +59,13 @@ const NavBar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                   {links}
+                    {links}
                 </ul>
             </div>
             <div className="navbar-end">
+                <p>{user?.email}</p>
                 <button className="btn btn-outline btn-warning">
-                    Get Start
+                    Appointment
                 </button>
             </div>
         </div>
