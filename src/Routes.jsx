@@ -10,6 +10,8 @@ import CheckOut from "./Pages/CheckOut";
 import AddNewService from "./Pages/AddNewService";
 import Service from "./Pages/Service";
 import ServiceDetails from "./Components/ServiceDetails/ServiceDetails";
+import Orders from "./Pages/Orders";
+import PrivetRoute from "./PrivetRoute/PrivetRoute";
 const router = createBrowserRouter([
   
   {
@@ -32,6 +34,10 @@ const router = createBrowserRouter([
         {
             path: '/add_new_service',
             element: <AddNewService></AddNewService>
+        },
+        {
+            path: '/orders',
+            element: <PrivetRoute><Orders></Orders></PrivetRoute>
         },
         {
             path: '/service',
