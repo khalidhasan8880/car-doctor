@@ -6,9 +6,10 @@ import Main from "./Layout/Main";
 import Home from "./Pages/Home";
 import Login from "./Authentication/Login";
 import SignUp from "./Authentication/SignUp";
-import ServiceDetails from "./Pages/ServiceDetails";
 import CheckOut from "./Pages/CheckOut";
 import AddNewService from "./Pages/AddNewService";
+import Service from "./Pages/Service";
+import ServiceDetails from "./Components/ServiceDetails/ServiceDetails";
 const router = createBrowserRouter([
   
   {
@@ -33,9 +34,15 @@ const router = createBrowserRouter([
             element: <AddNewService></AddNewService>
         },
         {
-            path: '/service/:id',
-            element: <ServiceDetails></ServiceDetails>,
-            loader: ({params})=>fetch(`http://localhost:5000/service/${params.id}`)
+            path: '/service',
+            element: <Service></Service>,
+            children:[
+              {
+                path:'/service/:id',
+                element:<ServiceDetails></ServiceDetails>,
+                loader: ({params})=>fetch(`http://localhost:5000/service/${params.id}`),
+              }
+            ]
         },
         {
             path: '/sign_up',
