@@ -1,19 +1,20 @@
-import { useLoaderData, useOutletContext, useParams} from "react-router-dom";
+import { NavLink, useLoaderData,  useOutletContext, useParams } from "react-router-dom";
 
 const ServiceDetails = () => {
-
     const setSelectedServiceId = useOutletContext()
-    const {id} = useParams()
-   
-    if (id) {
-        setSelectedServiceId(id)
-    }else{
-        setSelectedServiceId(null)
-    }
+
+    const { id } = useParams()
+    
+    // if (id) {
+    //     setSelectedServiceId(id)
+    // }else{
+    //     setSelectedServiceId(null)
+    // }
 
     const { img, description, facility, title, } = useLoaderData()
     return (
         <div className="sm:w-4/6 w-full flex flex-col gap-y-5 px-5">
+            <NavLink className={({ isActive }) => (isActive ? setSelectedServiceId(id) : setSelectedServiceId(null))}></NavLink>
             <img className="w-full rounded-lg" src={img} alt="" />
             <h2>{title}</h2>
             <p>{description}</p>

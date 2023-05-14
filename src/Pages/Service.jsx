@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import Banner from "../Shared/Banner";
 import { useEffect, useState } from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
@@ -8,10 +8,17 @@ const Service = () => {
 
     const [selectedServiceId, setSelectedServiceId] = useState(null)
     const [services, setServices] = useState([])
+    const navigate = useNavigate()
+    
+
     useEffect(() => {
         fetch('http://localhost:5000/services')
             .then(res => res.json())
-            .then(data => setServices(data))
+            .then(data => {
+                setServices(data)
+                // for showing initial or first service details  
+                navigate(`/service/${data[0]?._id}`)
+            })
     }, [])
 
     return (
@@ -37,7 +44,7 @@ const Service = () => {
                     <div className="flex justify-center">
                         {
                             selectedServiceId ?
-                                <Link to={`/checkout/${selectedServiceId}`} className="btn btn-warning   ">Proceed Checkout</Link>
+                                <Link  to={`/checkout/${selectedServiceId}`} className="btn btn-warning   ">Proceed Checkout</Link>
                                 :
                                 ''
                         }

@@ -1,16 +1,18 @@
 import { useContext } from 'react';
 import logoImg from '../assets/logo.svg'
-import { NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const NavBar = () => {
     // hooks
+    
     const { user, logOut } = useContext(AuthContext)
     // log out 
     const logoutHandler = () => {
         logOut()
             .then(res => {
                 console.log(res);
+                
             })
             .catch(err => {
                 console.log(err);
@@ -34,9 +36,14 @@ const NavBar = () => {
             <NavLink to='/contact'>Contact </NavLink>
         </li>
         {user ?
-            <li>
-                <button onClick={logoutHandler}>Log Out</button>
-            </li>
+            <>
+                <li>
+                    <NavLink to='/orders'>My Order</NavLink>
+                </li>
+                <li>
+                    <button onClick={logoutHandler}>Log Out</button>
+                </li>
+            </>
             :
             <li>
                 <NavLink to='/login'>Log in </NavLink>

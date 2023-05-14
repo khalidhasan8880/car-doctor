@@ -31,9 +31,11 @@ const AuthProvider = ({ children }) => {
         });
     }
     const logOut =()=>{
+        setLoading()
         return signOut(auth)
     } 
     const continueWithGoogle = () => {
+        setLoading()
         return signInWithPopup(auth, googleProvider)
     }
     useEffect(()=>{
@@ -42,6 +44,7 @@ const AuthProvider = ({ children }) => {
                 setUser(user)
                 setLoading(false)
             }else{
+                setUser(null)
                 setLoading(false)
             }
         })

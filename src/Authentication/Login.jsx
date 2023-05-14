@@ -2,10 +2,12 @@ import { AiOutlineFacebook, AiOutlineGoogle, AiOutlineLinkedin } from 'react-ico
 import loginImg from '../assets/images/login/login.svg'
 import { useContext } from 'react';
 import { AuthContext } from '../AuthProvider/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 const Login = () => {
     const { logIn, continueWithGoogle } = useContext(AuthContext)
-
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || '/';
     const loginHandler = (e) => {
         e.preventDefault()
         const form = e.target
@@ -15,6 +17,7 @@ const Login = () => {
         logIn(email, password)
             .then(res => {
                 console.log(res);
+                navigate(from)
             })
             .catch(err => {
                 console.log(err);
@@ -31,6 +34,8 @@ const Login = () => {
         continueWithGoogle()
             .then(res => {
                 console.log(res);
+                navigate(from, {replace:true})
+
             }).catch(err => {
                 console.log(err);
             })
